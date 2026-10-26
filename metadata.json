@@ -1,0 +1,6 @@
+{
+  "name": "PCU Event Hub - Pimpri Chinchwad University Pune",
+  "description": "Official campus event hub for Pimpri Chinchwad University (PCU), Pune. Explore ANANTAM cultural fest, PCU Ideathon, NAVYOM, Kridarambha, and register for student entry passes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
