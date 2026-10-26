@@ -1,19 +1,46 @@
 import { CampusEvent, Registration } from '../types';
 import { INITIAL_EVENTS } from '../data/initialEvents';
 
-const EVENTS_STORAGE_KEY = 'pcu_pune_events_v2';
+const EVENTS_STORAGE_KEY = 'pcu_pune_events_v3';
 const REGISTRATIONS_STORAGE_KEY = 'pcu_pune_registrations_v2';
 const BOOKMARKS_STORAGE_KEY = 'pcu_pune_bookmarks_v2';
 
+const sanitizeEventImages = (events: CampusEvent[]): CampusEvent[] => {
+  return events.map((evt) => {
+    let img = evt.image;
+    if (img && img.startsWith('/src/assets/images/')) {
+      img = img.replace('/src/assets/images/', '/images/');
+    }
+    return { ...evt, image: img };
+  });
+};
+
 export function getStoredEvents(): CampusEvent[] {
   try {
-    const raw = localStorage.getItem(EVENTS_STORAGE_KEY);
+    let raw = localStorage.getItem(EVENTS_STORAGE_KEY);
     if (!raw) {
+      // Check if previous v2 exists to migrate user data
+      const legacyRaw = localStorage.getItem('pcu_pune_events_v2');
+      if (legacyRaw) {
+        try {
+          const legacyParsed = JSON.parse(legacyRaw);
+          if (Array.isArray(legacyParsed) && legacyParsed.length > 0) {
+            const sanitized = sanitizeEventImages(legacyParsed);
+            localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(sanitized));
+            return sanitized;
+          }
+        } catch {
+          // ignore error
+        }
+      }
       localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(INITIAL_EVENTS));
       return INITIAL_EVENTS;
     }
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : INITIAL_EVENTS;
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return sanitizeEventImages(parsed);
+    }
+    return INITIAL_EVENTS;
   } catch {
     return INITIAL_EVENTS;
   }
@@ -21,7 +48,7 @@ export function getStoredEvents(): CampusEvent[] {
 
 export function saveStoredEvents(events: CampusEvent[]): void {
   try {
-    localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(events));
+    localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(sanitizeEventImages(events)));
   } catch (e) {
     console.error('Failed to save events to localStorage', e);
   }

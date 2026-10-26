@@ -22,7 +22,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 3500,
     registeredCount: 3120,
-    image: '/src/assets/images/event_quad_festival_1793000614111.jpg',
+    image: '/images/event_quad_festival_1793000614111.jpg',
     tags: ['ANANTAM', 'Pro-Night Concert', 'Fashion Walk', 'Dance Trophy', 'PCU Pune Fest'],
     featured: true,
     passes: [
@@ -84,7 +84,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 400,
     registeredCount: 358,
-    image: '/src/assets/images/event_hackathon_1793000613790.jpg',
+    image: '/images/event_hackathon_1793000613790.jpg',
     tags: ['Hackathon', 'AI & Robotics', 'Pune Tech', 'Cash Prizes ₹2,50,000', 'SoET PCU'],
     featured: true,
     passes: [
@@ -146,7 +146,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 600,
     registeredCount: 524,
-    image: '/src/assets/images/event_career_fair_1793000614416.jpg',
+    image: '/images/event_career_fair_1793000614416.jpg',
     tags: ['NAVYOM', 'MBA / BBA', 'Corporate Leaders', 'B-Plan Pitch', 'Networking'],
     featured: false,
     passes: [
@@ -208,7 +208,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 1800,
     registeredCount: 1620,
-    image: '/src/assets/images/pcu_sports_complex_1793001610696.jpg',
+    image: '/images/pcu_sports_complex_1793001610696.jpg',
     tags: ['KRIDARAMBHA', 'Cricket League', 'Football Cup', 'Athletics Meet', 'PCU Sports'],
     featured: false,
     passes: [
@@ -265,7 +265,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 500,
     registeredCount: 420,
-    image: '/src/assets/images/event_arts_music_1793000613362.jpg',
+    image: '/images/event_arts_music_1793000613362.jpg',
     tags: ['Design Vista', 'Pune Design School', 'UI/UX', 'Product Prototypes', 'Automotive Styling'],
     featured: false,
     passes: [
@@ -322,7 +322,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'Hybrid',
     capacity: 250,
     registeredCount: 215,
-    image: '/src/assets/images/event_hackathon_1793000613790.jpg',
+    image: '/images/event_hackathon_1793000613790.jpg',
     tags: ['Cyber Security', 'CTF Challenge', 'Ethical Hacking', 'CREST Club', 'Cloud Defense'],
     featured: false,
     passes: [
@@ -379,7 +379,7 @@ export const INITIAL_EVENTS: CampusEvent[] = [
     format: 'In-Person',
     capacity: 220,
     registeredCount: 165,
-    image: '/src/assets/images/pcu_central_library_1793001610594.jpg',
+    image: '/images/pcu_central_library_1793001610594.jpg',
     tags: ['Swami Vivekananda Library', 'Research Colloquium', 'IEEE Xplore', 'Patent Filing', 'Scholar Summit'],
     featured: false,
     passes: [
@@ -439,7 +439,7 @@ export const PCU_FACILITIES: PCUFacility[] = [
     title: 'Swami Vivekananda Central Library',
     category: 'Knowledge & Research',
     description: 'Automated multi-level library equipped with 10,000+ volumes, RFID tracking, KOHA software, high-speed Wi-Fi, and global e-journal databases (EBSCO, ProQuest, IEEE).',
-    image: '/src/assets/images/pcu_central_library_1793001610594.jpg',
+    image: '/images/pcu_central_library_1793001610594.jpg',
     highlights: ['RFID Self-Check Kiosks', 'Collaborative Study Pods', 'Digital Library Suite', 'Over 10,000+ Academic Volumes'],
     capacityOrSpecs: '500+ Seating Capacity',
     location: 'Central Academic Block, Level 1–3'
@@ -449,7 +449,7 @@ export const PCU_FACILITIES: PCUFacility[] = [
     title: 'PCU International Sports Complex & Arena',
     category: 'Athletics & Recreation',
     description: 'Championship-grade athletic grounds featuring a full-size football turf, cricket match pavilion, synthetic running track, and indoor badminton arena overlooking the scenic Sahyadri hills.',
-    image: '/src/assets/images/pcu_sports_complex_1793001610696.jpg',
+    image: '/images/pcu_sports_complex_1793001610696.jpg',
     highlights: ['Synthetic 400m Athletic Track', 'Floodlit Turf Stadium', 'Indoor Badminton & Table Tennis', 'Annual KRIDARAMBHA Venue'],
     capacityOrSpecs: '2,000+ Spectator Capacity',
     location: 'South Campus Athletic Zone, Sate-Maval'
@@ -459,7 +459,7 @@ export const PCU_FACILITIES: PCUFacility[] = [
     title: 'PCU Main Academic Complex & Entrance Portico',
     category: 'Academic Infrastructure',
     description: 'Iconic contemporary architectural entrance with geometric glass facades, smart tech-enabled lecture amphitheaters, and landscaped tropical gardens.',
-    image: '/src/assets/images/pcu_campus_entrance_1793001612096.jpg',
+    image: '/images/pcu_campus_entrance_1793001612096.jpg',
     highlights: ['Tech-Enabled Smart Classrooms', 'PMRDA Educational Corridor', 'Air-Conditioned Conference Suites', 'Solar Powered Green Building'],
     capacityOrSpecs: 'Multi-Department Complex',
     location: 'Main University Entrance, Sate, Pune'
@@ -469,7 +469,7 @@ export const PCU_FACILITIES: PCUFacility[] = [
     title: 'Student Residential Hostels & Dining Quad',
     category: 'Campus Living & Hostels',
     description: 'Safe, modern residential towers with single, double, and triple occupancy rooms, 24/7 security surveillance, high-speed Wi-Fi, recreational lounges, and hygienic multi-cuisine dining.',
-    image: '/src/assets/images/pcu_hostel_residence_1793001612149.jpg',
+    image: '/images/pcu_hostel_residence_1793001612149.jpg',
     highlights: ['24/7 CCTV & Security', 'Nutritious Multi-Cuisine Mess', 'Lush Outdoor Dining Pergola', 'Laundry & Housekeeping'],
     capacityOrSpecs: '1,200+ Student Residents',
     location: 'Residential Living Quad, PCU Campus'

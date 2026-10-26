@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CampusEvent } from '../types';
 import { X, Calendar, Clock, MapPin, Users, Check, Sparkles, Building, Mail, ShieldAlert, ArrowRight } from 'lucide-react';
 
@@ -17,6 +17,8 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
   isRegistered,
   onOpenRegister
 }) => {
+  const [imageError, setImageError] = useState(false);
+
   if (!isOpen || !event) return null;
 
   const remaining = Math.max(0, event.capacity - event.registeredCount);
@@ -30,13 +32,21 @@ export const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
       >
         {/* Modal Header with Image */}
         <div className="relative aspect-[21/9] sm:aspect-[24/9] w-full overflow-hidden bg-slate-900 shrink-0">
-          <img
-            src={event.image}
-            alt={event.title}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+          {!imageError ? (
+            <img
+              src={event.image}
+              alt={event.title}
+              referrerPolicy="no-referrer"
+              onError={() => setImageError(true)}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col justify-center items-center bg-gradient-to-br from-blue-950 to-slate-900 text-white p-6">
+              <span className="text-xs uppercase tracking-wider text-amber-400 font-semibold">{event.categoryLabel}</span>
+              <span className="text-lg font-bold text-white mt-1 text-center line-clamp-1">{event.title}</span>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent pointer-events-none" />
 
           {/* Close button */}
           <button

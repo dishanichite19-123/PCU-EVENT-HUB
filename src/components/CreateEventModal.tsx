@@ -64,11 +64,11 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({
 
     // Default to one of the rich generated campus images
     const sampleImages = [
-      '/src/assets/images/hero_campus_quad_1793000612998.jpg',
-      '/src/assets/images/event_hackathon_1793000613790.jpg',
-      '/src/assets/images/event_arts_music_1793000613362.jpg',
-      '/src/assets/images/event_career_fair_1793000614416.jpg',
-      '/src/assets/images/event_quad_festival_1793000614111.jpg'
+      '/images/hero_campus_quad_1793000612998.jpg',
+      '/images/event_hackathon_1793000613790.jpg',
+      '/images/event_arts_music_1793000613362.jpg',
+      '/images/event_career_fair_1793000614416.jpg',
+      '/images/event_quad_festival_1793000614111.jpg'
     ];
     const pickedImage = sampleImages[Math.floor(Math.random() * sampleImages.length)];
 

@@ -191,8 +191,10 @@ The project is pre-configured with `vercel.json` for zero-configuration, product
 ## 📁 6. Repository File Structure
 
 ```
+├── public/
+│   └── images/                       # Public campus assets & event imagery served directly by Vercel
 ├── .env.example                      # Environment variable templates
-├── index.html                        # HTML entry point with Google Fonts & GIS script
+├── index.html                        # HTML entry point with Google Fonts, Favicon & GIS script
 ├── metadata.json                     # AI Studio application metadata
 ├── package.json                      # Project dependencies & scripts
 ├── README.md                         # Documentation & Vercel deployment guide
@@ -204,8 +206,7 @@ The project is pre-configured with `vercel.json` for zero-configuration, product
     ├── main.tsx                      # React root wrapped in AuthProvider
     ├── index.css                     # Tailwind CSS v4 & custom typography
     ├── types.ts                      # Event, Registration, and Pass data interfaces
-    ├── assets/
-    │   └── images/                   # High-res PCU library, sports & campus assets
+    ├── assets/                       # High-res PCU library, sports & campus assets
     ├── context/
     │   └── AuthContext.tsx           # Google Authentication Context & GIS SDK
     ├── data/

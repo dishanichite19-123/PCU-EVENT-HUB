@@ -10,6 +10,8 @@ export const CampusFacilitiesGallery: React.FC<CampusFacilitiesGalleryProps> = (
   onFilterByVenue
 }) => {
   const [selectedFacility, setSelectedFacility] = useState<PCUFacility>(PCU_FACILITIES[0]);
+  const [spotlightImgError, setSpotlightImgError] = useState(false);
+  const [thumbnailErrors, setThumbnailErrors] = useState<Record<string, boolean>>({});
 
   return (
     <section className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs p-6 sm:p-8 space-y-6">
@@ -45,13 +47,22 @@ export const CampusFacilitiesGallery: React.FC<CampusFacilitiesGalleryProps> = (
         {/* Left: Main Featured Facility Spotlight */}
         <div className="lg:col-span-7 space-y-4">
           <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-slate-200 shadow-md group bg-slate-950">
-            <img
-              src={selectedFacility.image}
-              alt={selectedFacility.title}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex flex-col justify-end p-6 text-white">
+            {!spotlightImgError ? (
+              <img
+                src={selectedFacility.image}
+                alt={selectedFacility.title}
+                referrerPolicy="no-referrer"
+                onError={() => setSpotlightImgError(true)}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col justify-center items-center bg-gradient-to-br from-blue-950 to-slate-900 text-white p-6 text-center">
+                <Building2 className="w-12 h-12 text-blue-400 mb-2 opacity-80" />
+                <span className="text-xs text-amber-400 font-semibold uppercase tracking-wider">{selectedFacility.category}</span>
+                <span className="text-lg font-bold mt-1">{selectedFacility.title}</span>
+              </div>
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent flex flex-col justify-end p-6 text-white pointer-events-none">
               <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">
                 {selectedFacility.category}
               </span>
@@ -106,19 +117,29 @@ export const CampusFacilitiesGallery: React.FC<CampusFacilitiesGalleryProps> = (
               return (
                 <div
                   key={fac.id}
-                  onClick={() => setSelectedFacility(fac)}
+                  onClick={() => {
+                    setSelectedFacility(fac);
+                    setSpotlightImgError(false);
+                  }}
                   className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center gap-3.5 ${
                     isSelected
                       ? 'border-blue-900 bg-blue-50/50 shadow-xs'
                       : 'border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white'
                   }`}
                 >
-                  <img
-                    src={fac.image}
-                    alt={fac.title}
-                    referrerPolicy="no-referrer"
-                    className="w-16 h-14 rounded-lg object-cover shrink-0 border border-slate-200"
-                  />
+                  {!thumbnailErrors[fac.id] ? (
+                    <img
+                      src={fac.image}
+                      alt={fac.title}
+                      referrerPolicy="no-referrer"
+                      onError={() => setThumbnailErrors((prev) => ({ ...prev, [fac.id]: true }))}
+                      className="w-16 h-14 rounded-lg object-cover shrink-0 border border-slate-200"
+                    />
+                  ) : (
+                    <div className="w-16 h-14 rounded-lg bg-blue-950 flex items-center justify-center shrink-0 border border-slate-200 text-white">
+                      <Building2 className="w-6 h-6 text-blue-300" />
+                    </div>
+                  )}
                   <div className="flex-1 min-w-0">
                     <span className="text-[11px] font-semibold text-blue-900 uppercase tracking-wide block">
                       {fac.category}

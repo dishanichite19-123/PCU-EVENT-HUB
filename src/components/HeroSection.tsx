@@ -1,5 +1,5 @@
-import React from 'react';
-import { Search, Calendar, MapPin, Users, Sparkles, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Calendar, MapPin, Users, Sparkles, ArrowRight, Building2 } from 'lucide-react';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -16,6 +16,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   featuredEventTitle,
   onSelectFeatured
 }) => {
+  const [heroImgError, setHeroImgError] = useState(false);
   return (
     <div className="relative border-b border-slate-200 bg-white">
       {/* Hero Banner Grid Split */}
@@ -99,13 +100,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right Column: Hero Visual Asset */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
-              <img
-                src="/src/assets/images/pcu_campus_entrance_1793001612096.jpg"
-                alt="Pimpri Chinchwad University PCU Main Academic Building Pune"
-                referrerPolicy="no-referrer"
-                className="w-full h-72 sm:h-80 lg:h-96 object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-              />
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md group bg-slate-900">
+              {!heroImgError ? (
+                <img
+                  src="/images/pcu_campus_entrance_1793001612096.jpg"
+                  alt="Pimpri Chinchwad University PCU Main Academic Building Pune"
+                  referrerPolicy="no-referrer"
+                  onError={() => setHeroImgError(true)}
+                  className="w-full h-72 sm:h-80 lg:h-96 object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              ) : (
+                <div className="w-full h-72 sm:h-80 lg:h-96 flex flex-col justify-center items-center bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 p-6 text-white text-center">
+                  <Building2 className="w-12 h-12 text-blue-400 mb-2 opacity-80" />
+                  <span className="text-xs uppercase tracking-wider text-blue-300 font-semibold">Pimpri Chinchwad University</span>
+                  <span className="text-base font-bold text-white mt-1">Sate-Maval Campus Pune</span>
+                </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent flex flex-col justify-end p-5 text-white">
                 <div className="text-xs text-amber-400 font-semibold uppercase tracking-wider">
                   Featured University Fest
